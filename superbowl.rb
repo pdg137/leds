@@ -6,7 +6,7 @@ seahawks = Magick::ImageList.new('seahawks.png')
 patriots = Magick::ImageList.new('patriots.png')
 
 def rgb(r,g,b)
-  OUTPUT.write([b + (g << 5),(g >> 3) + (r << 2)].pack("CC"))
+  OUTPUT.write([b + (g << 5) + (r << 10)].pack("S<"))
 end
 
 def sync

@@ -5,7 +5,7 @@ require 'rmagick'
 letters = Magick::ImageList.new('letters.png')
 
 def rgb(r,g,b)
-  OUTPUT.write([b + (g << 5) + (r << 10)].pack("s<"))
+  OUTPUT.write([b + (g << 5) + (r << 10)].pack("S<"))
 end
 
 def sync
@@ -14,6 +14,7 @@ end
 
 def scroll(image)
   sync
+  puts "I (heart) LVRUG"
   (image.columns-7).times do |i|
     view = image.view(i,0,8,5)
     5.times do |y|
