@@ -21,7 +21,15 @@ void nextByte(uint8_t b) {
     return;
   }
   
-  strip.setPixelColor(i, strip.Color((b1 >> 2) & 31, ((b1 << 3)+(b>>5)) & 31, b & 31));
+  if(b1 == 0xff && b == 0xff)
+  {
+    i = 0;
+    b1_set = 0;
+    return;
+  }
+  
+  strip.setPixelColor(i, strip.Color((b >> 2) & 31, ((b << 3)+(b1>>5)) & 31, b1 & 31));
+
   b1_set = 0;
   i ++;
   if(i == 40)
